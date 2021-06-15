@@ -64,8 +64,6 @@ const p3 = new Person();
 p1.study();
 p2.teach();
 
-
-
 console.log(p1.greeting('Hello'));
 console.log(p2.greeting('Good Morning'));
 
