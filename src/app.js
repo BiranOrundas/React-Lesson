@@ -14,8 +14,6 @@ class TodoApp extends React.Component{
              <Action />
         </div>
     );
-
-
         
     }
 }
