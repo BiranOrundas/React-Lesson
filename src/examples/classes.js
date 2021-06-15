@@ -39,7 +39,7 @@ class Person {
 
         constructor (name,year,department){
 
-            super(name,year,department);
+            super(name,year);
             this.department = department;
 
     }
