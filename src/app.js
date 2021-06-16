@@ -7,10 +7,20 @@
 
 class TodoApp extends React.Component{
     render(){
+        const app = {
+                 title :"Todo Application!",
+                 description:"lorem ipsum dolor 3 4 5",
+                    items : ['item1','item2','item3', 'item4'],
+                    
+
+            };
+          
+
         return (
+
             <div>
-            <Header />
-             <Todo />
+            <Header title= {app.title} description= {app.description} />
+             <TodoList items= {app.items} />
              <Action />
         </div>
     );
@@ -18,32 +28,54 @@ class TodoApp extends React.Component{
     }
 }
 
+// const Header = function (props) {
+//     console.log(props);
+//     return(
+//         <div>
+//             <h1>{props.title}</h1>
+//             <div>{props.description}</div>
+//         </div>
+//     )
+    
+// }
+
+console.log(React.Component);
 
 class Header extends React.Component {
-    render(){
-        return (
-                <div>
-            
-                      <h1>Todo Application </h1>
-                      <div>Lorem, ipsum dolor.</div>
-        
-                 </div>
+  
+    render(){  
 
-                
-         );
+         console.log(this.props)
+
+        return (
+                <div>            
+                      <h1> {this.props.title} </h1>
+                      <div>{this.props.description}</div> 
+                             
+                 </div>
+           );
 
     }
 }
 
-class Todo extends React.Component {
+class TodoList extends React.Component {
     render (){
         return( 
          <ul>
-            <li>İtem1</li>
-            <li>İtem2</li>
-            <li>İtem3</li>
+           {
+               this.props.items.map((item,index) =>
+                    <TodoItem key={index} item = {item} />
+                )
+           }
 
          </ul>
+        );
+    }
+}
+class TodoItem extends React.Component{
+    render(){
+        return (
+            <li>{this.props.item} </li>
         );
     }
 }
@@ -71,4 +103,4 @@ class Action extends React.Component {
 
 
 
-ReactDOM.render(<TodoApp / >, document.getElementById('root'));
+ReactDOM.render(<TodoApp />, document.getElementById('root'));

@@ -39,12 +39,33 @@ var TodoApp = /*#__PURE__*/function (_React$Component) {
   _createClass(TodoApp, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Header, null), /*#__PURE__*/React.createElement(Todo, null), /*#__PURE__*/React.createElement(Action, null));
+      var app = {
+        title: "Todo Application!",
+        description: "lorem ipsum dolor 3 4 5",
+        items: ['item1', 'item2', 'item3', 'item4']
+      };
+      return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Header, {
+        title: app.title,
+        description: app.description
+      }), /*#__PURE__*/React.createElement(TodoList, {
+        items: app.items
+      }), /*#__PURE__*/React.createElement(Action, null));
     }
   }]);
 
   return TodoApp;
-}(React.Component);
+}(React.Component); // const Header = function (props) {
+//     console.log(props);
+//     return(
+//         <div>
+//             <h1>{props.title}</h1>
+//             <div>{props.description}</div>
+//         </div>
+//     )
+// }
+
+
+console.log(React.Component);
 
 var Header = /*#__PURE__*/function (_React$Component2) {
   _inherits(Header, _React$Component2);
@@ -60,43 +81,70 @@ var Header = /*#__PURE__*/function (_React$Component2) {
   _createClass(Header, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, "Todo Application "), /*#__PURE__*/React.createElement("div", null, "Lorem, ipsum dolor."));
+      console.log(this.props);
+      return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, " ", this.props.title, " "), /*#__PURE__*/React.createElement("div", null, this.props.description));
     }
   }]);
 
   return Header;
 }(React.Component);
 
-var Todo = /*#__PURE__*/function (_React$Component3) {
-  _inherits(Todo, _React$Component3);
+var TodoList = /*#__PURE__*/function (_React$Component3) {
+  _inherits(TodoList, _React$Component3);
 
-  var _super3 = _createSuper(Todo);
+  var _super3 = _createSuper(TodoList);
 
-  function Todo() {
-    _classCallCheck(this, Todo);
+  function TodoList() {
+    _classCallCheck(this, TodoList);
 
     return _super3.apply(this, arguments);
   }
 
-  _createClass(Todo, [{
+  _createClass(TodoList, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, "\u0130tem1"), /*#__PURE__*/React.createElement("li", null, "\u0130tem2"), /*#__PURE__*/React.createElement("li", null, "\u0130tem3"));
+      return /*#__PURE__*/React.createElement("ul", null, this.props.items.map(function (item, index) {
+        return /*#__PURE__*/React.createElement(TodoItem, {
+          key: index,
+          item: item
+        });
+      }));
     }
   }]);
 
-  return Todo;
+  return TodoList;
 }(React.Component);
 
-var Action = /*#__PURE__*/function (_React$Component4) {
-  _inherits(Action, _React$Component4);
+var TodoItem = /*#__PURE__*/function (_React$Component4) {
+  _inherits(TodoItem, _React$Component4);
 
-  var _super4 = _createSuper(Action);
+  var _super4 = _createSuper(TodoItem);
+
+  function TodoItem() {
+    _classCallCheck(this, TodoItem);
+
+    return _super4.apply(this, arguments);
+  }
+
+  _createClass(TodoItem, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/React.createElement("li", null, this.props.item, " ");
+    }
+  }]);
+
+  return TodoItem;
+}(React.Component);
+
+var Action = /*#__PURE__*/function (_React$Component5) {
+  _inherits(Action, _React$Component5);
+
+  var _super5 = _createSuper(Action);
 
   function Action() {
     _classCallCheck(this, Action);
 
-    return _super4.apply(this, arguments);
+    return _super5.apply(this, arguments);
   }
 
   _createClass(Action, [{
