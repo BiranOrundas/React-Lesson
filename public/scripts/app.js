@@ -40,16 +40,17 @@ var TodoApp = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var app = {
-        title: "Todo Application!",
-        description: "lorem ipsum dolor 3 4 5",
-        items: ['item1', 'item2', 'item3', 'item4']
+        title: "Liste Aplikasyonu!",
+        description: "Ürünlerin seçimlerini boşluk kısmından ekleyebilirsiniz",
+        items: ['Kitap Saati', 'Okul dersleri', 'Bireysel Dersler', 'Günlük Hobiler'],
+        info: "Tüm Hakları Saklıdır"
       };
       return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Header, {
         title: app.title,
         description: app.description
       }), /*#__PURE__*/React.createElement(TodoList, {
         items: app.items
-      }), /*#__PURE__*/React.createElement(Action, null));
+      }), /*#__PURE__*/React.createElement(Action, null), /*#__PURE__*/React.createElement(Biran, null));
     }
   }]);
 
@@ -65,7 +66,7 @@ var TodoApp = /*#__PURE__*/function (_React$Component) {
 // }
 
 
-console.log(React.Component);
+console.log(ReactDOM);
 
 var Header = /*#__PURE__*/function (_React$Component2) {
   _inherits(Header, _React$Component2);
@@ -150,16 +151,42 @@ var Action = /*#__PURE__*/function (_React$Component5) {
   _createClass(Action, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("button", null, " Clear Item ")), /*#__PURE__*/React.createElement("p", null, "  "), /*#__PURE__*/React.createElement("form", null, /*#__PURE__*/React.createElement("input", {
+      return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("form", null, /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("input", {
         type: "text",
         name: "txtItem"
-      }), /*#__PURE__*/React.createElement("button", {
+      })), /*#__PURE__*/React.createElement("button", {
         type: "submit"
-      }, "Add \u0130tem")));
+      }, "Aktivite ekle"), /*#__PURE__*/React.createElement("button", null, " Listeyi temizle ")));
     }
   }]);
 
   return Action;
+}(React.Component);
+
+var Biran = /*#__PURE__*/function (_React$Component6) {
+  _inherits(Biran, _React$Component6);
+
+  var _super6 = _createSuper(Biran);
+
+  function Biran() {
+    _classCallCheck(this, Biran);
+
+    return _super6.apply(this, arguments);
+  }
+
+  _createClass(Biran, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, "Biran"), /*#__PURE__*/React.createElement("li", null, "Orunda\u015F"), /*#__PURE__*/React.createElement("li", null, "birka\xE7"), /*#__PURE__*/React.createElement("li", null, "\u015Fey daha")), /*#__PURE__*/React.createElement("form", null, /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("input", {
+        type: "text",
+        name: "txtItem"
+      })), /*#__PURE__*/React.createElement("button", {
+        type: "submit"
+      }, "Google")));
+    }
+  }]);
+
+  return Biran;
 }(React.Component);
 
 ReactDOM.render( /*#__PURE__*/React.createElement(TodoApp, null), document.getElementById('root'));

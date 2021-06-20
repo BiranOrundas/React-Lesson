@@ -8,10 +8,10 @@
 class TodoApp extends React.Component{
     render(){
         const app = {
-                 title :"Todo Application!",
-                 description:"lorem ipsum dolor 3 4 5",
-                    items : ['item1','item2','item3', 'item4'],
-                    
+                 title :"Liste Aplikasyonu!",
+                 description:"Ürünlerin seçimlerini boşluk kısmından ekleyebilirsiniz",
+                    items : ['Kitap Saati','Okul dersleri','Bireysel Dersler', 'Günlük Hobiler'],
+                    info : "Tüm Hakları Saklıdır"
 
             };
           
@@ -22,6 +22,8 @@ class TodoApp extends React.Component{
             <Header title= {app.title} description= {app.description} />
              <TodoList items= {app.items} />
              <Action />
+             <Biran />
+             
         </div>
     );
         
@@ -39,7 +41,7 @@ class TodoApp extends React.Component{
     
 // }
 
-console.log(React.Component);
+console.log(ReactDOM);
 
 class Header extends React.Component {
   
@@ -51,8 +53,9 @@ class Header extends React.Component {
                 <div>            
                       <h1> {this.props.title} </h1>
                       <div>{this.props.description}</div> 
-                             
+                                              
                  </div>
+                 
            );
 
     }
@@ -84,21 +87,41 @@ class Action extends React.Component {
     render(){
         return(
             <div>
-                <p>
-                <button> Clear Item </button>
-                </p>
-                <p>  </p>
-                <form >
+                              
+                <form > 
+                 <p>  
                 <input type="text" name="txtItem"/>
-                <button type="submit">Add İtem</button>
+                </p>
+                <button type="submit">Aktivite ekle</button>  
+                <button> Listeyi temizle </button>
                 </form>
             </div>
         )
     }
+} 
+
+
+class Biran extends React.Component {
+    render(){
+        return (
+            <div>
+                <ul>
+                    <li>Biran</li>
+                    <li>Orundaş</li>
+                    <li>birkaç</li>
+                    <li>şey daha</li>
+                </ul> 
+                <form>
+                 <p>
+                 <input type="text" name="txtItem"/>
+                </p>
+                <button type="submit">Google</button>
+              </form>
+               
+            </div>
+        )
+    }
 }
-
-
-
 
 
 
