@@ -22,9 +22,6 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-//const Header() = function () {
-//   return <h1>Hello React</h1>
-//}
 var TodoApp = /*#__PURE__*/function (_React$Component) {
   _inherits(TodoApp, _React$Component);
 
@@ -47,10 +44,11 @@ var TodoApp = /*#__PURE__*/function (_React$Component) {
       };
       return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Header, {
         title: app.title,
-        description: app.description
+        description: app.description,
+        info: app.info
       }), /*#__PURE__*/React.createElement(TodoList, {
         items: app.items
-      }), /*#__PURE__*/React.createElement(Action, null), /*#__PURE__*/React.createElement(Biran, null));
+      }), /*#__PURE__*/React.createElement(Action, null));
     }
   }]);
 
@@ -83,7 +81,7 @@ var Header = /*#__PURE__*/function (_React$Component2) {
     key: "render",
     value: function render() {
       console.log(this.props);
-      return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, " ", this.props.title, " "), /*#__PURE__*/React.createElement("div", null, this.props.description));
+      return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, " ", this.props.title, " "), /*#__PURE__*/React.createElement("div", null, this.props.description), /*#__PURE__*/React.createElement("div", null, this.props.info));
     }
   }]);
 
@@ -95,21 +93,33 @@ var TodoList = /*#__PURE__*/function (_React$Component3) {
 
   var _super3 = _createSuper(TodoList);
 
-  function TodoList() {
+  function TodoList(props) {
+    var _this;
+
     _classCallCheck(this, TodoList);
 
-    return _super3.apply(this, arguments);
+    _this = _super3.call(this, props);
+    _this.clearItems = _this.clearItems.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(TodoList, [{
+    key: "clearItems",
+    value: function clearItems() {
+      console.log(this.props.items);
+      console.log('clear items');
+    }
+  }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/React.createElement("ul", null, this.props.items.map(function (item, index) {
+      return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("ul", null, this.props.items.map(function (item, index) {
         return /*#__PURE__*/React.createElement(TodoItem, {
           key: index,
           item: item
         });
-      }));
+      })), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("button", {
+        onClick: this.clearItems
+      }, " Listeyi temizle ")));
     }
   }]);
 
@@ -149,44 +159,32 @@ var Action = /*#__PURE__*/function (_React$Component5) {
   }
 
   _createClass(Action, [{
+    key: "onFormSubmit",
+    value: function onFormSubmit(e) {
+      e.preventDefault();
+      var item = e.target.elements.txtItem.value.trim();
+
+      if (item) {
+        console.log(item);
+      } else {
+        console.log("bir bilgi girmediniz...");
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("form", null, /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("input", {
+      return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("form", {
+        onSubmit: this.onFormSubmit
+      }, /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("input", {
         type: "text",
         name: "txtItem"
       })), /*#__PURE__*/React.createElement("button", {
         type: "submit"
-      }, "Aktivite ekle"), /*#__PURE__*/React.createElement("button", null, " Listeyi temizle ")));
+      }, "Aktivite ekle")));
     }
   }]);
 
   return Action;
-}(React.Component);
-
-var Biran = /*#__PURE__*/function (_React$Component6) {
-  _inherits(Biran, _React$Component6);
-
-  var _super6 = _createSuper(Biran);
-
-  function Biran() {
-    _classCallCheck(this, Biran);
-
-    return _super6.apply(this, arguments);
-  }
-
-  _createClass(Biran, [{
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, "Biran"), /*#__PURE__*/React.createElement("li", null, "Orunda\u015F"), /*#__PURE__*/React.createElement("li", null, "birka\xE7"), /*#__PURE__*/React.createElement("li", null, "\u015Fey daha")), /*#__PURE__*/React.createElement("form", null, /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("input", {
-        type: "text",
-        name: "txtItem"
-      })), /*#__PURE__*/React.createElement("button", {
-        type: "submit"
-      }, "Google")));
-    }
-  }]);
-
-  return Biran;
 }(React.Component);
 
 ReactDOM.render( /*#__PURE__*/React.createElement(TodoApp, null), document.getElementById('root'));

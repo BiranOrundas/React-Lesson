@@ -1,10 +1,3 @@
-//const Header() = function () {
-
-//   return <h1>Hello React</h1>
-    
-//}
-
-
 class TodoApp extends React.Component{
     render(){
         const app = {
@@ -22,7 +15,7 @@ class TodoApp extends React.Component{
             <Header title= {app.title} description= {app.description} info={app.info}/>
              <TodoList items= {app.items} />
              <Action />
-             <Biran />
+          
              
         </div>
     );
@@ -134,27 +127,7 @@ class Action extends React.Component {
 } 
 
 
-class Biran extends React.Component {
-    render(){
-        return (
-            <div>
-                <ul>
-                    <li>Biran</li>
-                    <li>Orundaş</li>
-                    <li>birkaç</li>
-                    <li>şey daha</li>
-                </ul> 
-                <form>
-                 <p>
-                 <input type="text" name="txtItem"/>
-                </p>
-                <button type="submit">Google</button>
-              </form>
-               
-            </div>
-        )
-    }
-}
+
 
 
 
